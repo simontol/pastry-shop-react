@@ -4,6 +4,12 @@ $light-blue: #9be1e5;
 $dark-blue: #529396;
 $light-red: #ec9096;
 
+#root {
+  width: 100vw;
+  margin: 0;
+  text-align: center;
+}
+
 .header {
   display: flex;
   height: 3rem;

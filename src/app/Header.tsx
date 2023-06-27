@@ -1,8 +1,8 @@
-import { useStoreQuery } from "./store/storeApi"
+import { useStoreQuery } from "./redux/storeApi"
 import Logo from "../assets/logo.png"
 
 const Header = () => {
-  const { data, isLoading } = useStoreQuery();
+  const { data } = useStoreQuery();
   return (
     <div className='header'>
       <div className="header__logo"><img src={ Logo } alt="" /></div>
