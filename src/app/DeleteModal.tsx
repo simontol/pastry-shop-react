@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "./redux/modalReducer";
-import { ProductModal } from "./redux/types";
 import { useDeleteProductMutation } from "./redux/storeApi";
 import { useEffect } from "react";
+import { ProductModalState } from "./redux/types";
 
-const ProductDelete = () => {
+const DeleteModal = () => {
   const dispatch = useDispatch();
-  const { show, data: product } = useSelector<any, ProductModal>(state => state.modal);
-  const className = `modal ${show === 'ProductDelete' ? 'd-block' : 'd-none'}`;
+  const { show, data: product } = useSelector<any, ProductModalState>(state => state.modal);
   const [deleteProduct, response] = useDeleteProductMutation();
 
   useEffect(() => {
@@ -16,10 +15,10 @@ const ProductDelete = () => {
     }
   }, [response, dispatch]);
 
-  if (!product) return null;
+  if (show !== 'DeleteModal' || !product) return null;
 
   return (
-    <div className={className}>
+    <div className='modal'>
       <section className="modal__body">
         <div className="modal__description">
           Do you wish to delete {product.data.title}?
@@ -42,4 +41,4 @@ const ProductDelete = () => {
   )
 }
 
-export default ProductDelete
+export default DeleteModal

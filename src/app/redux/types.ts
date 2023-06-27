@@ -31,7 +31,7 @@ export interface ModalState {
   data: any,
 }
 
-export interface ProductModal extends ModalState {
+export interface ProductModalState extends ModalState {
   data: Product | null
 }
 

@@ -1,8 +1,8 @@
+import DeleteModal from './app/DeleteModal'
 import Header from './app/Header'
 import Loader from './app/Loader'
 import ProductCard from './app/ProductCard'
-import ProductDelete from './app/ProductDelete'
-import ProductEdit from './app/ProductEdit'
+import ProductModal from './app/ProductModal'
 import { useDeleteProductMutation, useProductsQuery } from './app/redux/storeApi'
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
         {data?.list.map(product => (<ProductCard key={ product.id } product={ product }/>))}
       </div>
       { error && <div>Error</div>}
-      <ProductDelete />
-      <ProductEdit />
+      <DeleteModal />
+      <ProductModal />
       <Loader loading={ isLoading || response.isLoading }/>
     </>
   )
