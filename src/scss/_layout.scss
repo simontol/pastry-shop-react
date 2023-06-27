@@ -1,13 +1,40 @@
+$white: #FFF;
+$default-blue: #4c9da4;
+$light-blue: #9be1e5;
+$dark-blue: #529396;
+$light-red: #ec9096;
+
 .header {
   display: flex;
   height: 3rem;
-  background-color: #4c9da4;
-  color: #FFF;
+  background-color: $default-blue;
+  color: $white;
   padding: 1rem;
   align-items: center;
 
   &__title {
     font-size: 2rem;
     font-weight: 800;
+    line-height: 2.5rem;
+    margin-left: 1rem;
+  }
+  &__logo img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+button {
+  color: $white;
+  text-shadow: 1px 1px 2px $default-blue;
+  background-color: $dark-blue;
+
+  &:hover {
+    border: 0;
+    box-shadow: rgb(209, 210, 214) 0 0.2rem 0.5rem;
+  }
+
+  &.red {
+    background-color: $light-red;
   }
 }

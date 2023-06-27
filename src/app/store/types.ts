@@ -1,3 +1,9 @@
+export type Store = {
+  name: string,
+  category: string,
+  employees: string[],
+}
+
 export type Product = {
   id: string,
   data: {
@@ -6,7 +12,7 @@ export type Product = {
     price: number,
     employee: string,
     description: string,
-    reviews: string[],
+    reviews?: string[],
   }
 }
 
@@ -19,3 +25,4 @@ export type Pagination = {
   page: number,
   elements: number
 }
+
