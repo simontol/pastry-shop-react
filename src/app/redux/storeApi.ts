@@ -9,7 +9,7 @@ export const storeApi = createApi({
   tagTypes: ['Products'],
   endpoints: (builder) => ({
     store: builder.query<Store, void>({
-      query: () => `/`,
+      query: () => '',
     }),
     products: builder.query<ProductResponse, Pagination>({
       query: ({ page = 1, elements = 5 }) => `/products?page=${page}&elements=${elements}`,
@@ -18,11 +18,22 @@ export const storeApi = createApi({
     productById: builder.query<Product, string>({
       query: (id) => `/products/${id}`,
     }),
-    addNewProduct: builder.mutation({
-      query: (payload) => ({
+    newProduct: builder.mutation<any, Product>({
+      query: (product) => ({
         url: '/products',
         method: 'POST',
-        body: payload,
+        body: product,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+      invalidatesTags: ['Products'],
+    }),
+    updateProduct: builder.mutation<any, Product>({
+      query: (product) => ({
+        url: `/products/${product.id}`,
+        method: 'PUT',
+        body: product,
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
@@ -39,4 +50,11 @@ export const storeApi = createApi({
   }),
 })
 
-export const { useProductByIdQuery, useProductsQuery, useStoreQuery, useDeleteProductMutation } = storeApi
+export const {
+  useProductByIdQuery,
+  useProductsQuery,
+  useStoreQuery,
+  useDeleteProductMutation,
+  useUpdateProductMutation,
+  useNewProductMutation,
+} = storeApi

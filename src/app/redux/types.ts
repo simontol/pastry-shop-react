@@ -26,12 +26,8 @@ export type Pagination = {
   elements: number
 }
 
-export interface ModalState {
+export type ModalState = {
   show: string,
-  data: any,
-}
-
-export interface ProductModalState extends ModalState {
-  data: Product | null
+  product: Product|null,
 }
 

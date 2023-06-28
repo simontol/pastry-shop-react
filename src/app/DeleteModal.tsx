@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideModal } from "./redux/modalReducer";
 import { useDeleteProductMutation } from "./redux/storeApi";
 import { useEffect } from "react";
-import { ProductModalState } from "./redux/types";
+import { ModalState } from "./redux/types";
 
 const DeleteModal = () => {
   const dispatch = useDispatch();
-  const { show, data: product } = useSelector<any, ProductModalState>(state => state.modal);
+  const { show, product } = useSelector<any, ModalState>(state => state.modal);
   const [deleteProduct, response] = useDeleteProductMutation();
 
   useEffect(() => {

@@ -1,27 +1,22 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { ModalState } from "./types";
 
-type ModalAction = {
-  show: string;
-  data: any;
-}
-
 const initialState: ModalState = {
   show: '',
-  data: null,
+  product: null,
 }
 
 export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    showModal: (state, action: PayloadAction<ModalAction>) => {
+    showModal: (state, action: PayloadAction<ModalState>) => {
       state.show = action.payload.show;
-      state.data = action.payload.data;
+      state.product = action.payload.product;
     },
     hideModal: (state) => {
       state.show = '';
-      state.data = null;
+      state.product = null;
     },
   },
 })

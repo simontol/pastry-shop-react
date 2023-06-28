@@ -1,8 +1,9 @@
-import { useDispatch, useSelector } from "react-redux"
-import { ProductModalState } from "./redux/types"
-import { hideModal } from "./redux/modalReducer";
-import { useForm, SubmitHandler } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import Input from "./Input";
+import { hideModal } from "./redux/modalReducer";
+import { useNewProductMutation } from "./redux/storeApi";
+import { ModalState, Product } from "./redux/types";
 
 export type Inputs = {
   title: string,
@@ -15,10 +16,17 @@ export type Inputs = {
 
 const ProductModal = () => {
   const dispatch = useDispatch();
-  const { show, data: product } = useSelector<any, ProductModalState>(state => state.modal);
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<Inputs>({ values: product?.data });
+  const { show } = useSelector<any, ModalState>(state => state.modal);
+  const { register, handleSubmit, formState: { errors }, getValues, reset } = useForm<Inputs>();
+  const [createProduct, createResponse] = useNewProductMutation();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const newProduct: Product = {
+      id: '',
+      data,
+    }
+    createProduct(newProduct);
+  };
 
   if (show !== 'ProductModal') return null;
 
@@ -29,9 +37,14 @@ const ProductModal = () => {
           <Input register={register} name="title" errors={errors} required />
           <Input register={register} name="description" errors={errors} required />
           <Input register={register} name="category" errors={errors} required />
-          <button type="button" onClick={() => dispatch(hideModal())}>
-            Close
-          </button>
+          <div className="modal__buttons">
+            <button type="submit">
+              Save
+            </button>
+            <button type="button" onClick={() => dispatch(hideModal())}>
+              Close
+            </button>
+          </div>
         </form>
       </section>
     </div>

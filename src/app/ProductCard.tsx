@@ -10,7 +10,7 @@ const ProductCard = ({ product }: Props) => {
   const dispatch = useDispatch();
   const { data: { title, category, price, employee, description, reviews } } = product;
   const openModal = (type: string) => {
-    dispatch(showModal({ show: type, data: product }))
+    dispatch(showModal({ show: type, product }))
   }
   return (
     <>
@@ -22,7 +22,6 @@ const ProductCard = ({ product }: Props) => {
         <div className='product__description'>{description}</div>
         {reviews && <div className='product__reviews'>{reviews.map(review => (<div key={review}>{review}</div>))}</div>}
         <div className='product__buttons'>
-          <button onClick={() => openModal('ProductModal')}>EDIT</button>
           <button className='red' onClick={() => openModal('DeleteModal')}>DELETE</button>
         </div>
       </div>

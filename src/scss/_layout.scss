@@ -19,18 +19,36 @@ $light-red: #ec9096;
   align-items: center;
 
   &__title {
+    text-align: left;
+    flex: 1;
     font-size: 2rem;
     font-weight: 800;
     line-height: 2.5rem;
     margin-left: 1rem;
   }
+
   &__logo img {
     width: 2.5rem;
     height: 2.5rem;
   }
+
+  &__button {
+    color: $white;
+    background-color: $default-blue;
+    border: 2px solid $white;
+    margin-left: 1rem;
+
+    &:hover {
+      color: $default-blue;
+      background-color: $white;
+      border: 2px solid $white;
+      box-shadow: none;
+    }
+  }
 }
 
 button {
+  text-transform: uppercase;
   color: $white;
   text-shadow: 1px 1px 2px $default-blue;
   background-color: $dark-blue;

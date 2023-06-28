@@ -6,7 +6,7 @@ import ProductModal from './app/ProductModal'
 import { useDeleteProductMutation, useProductsQuery } from './app/redux/storeApi'
 
 function App() {
-  const { data, error, isLoading } = useProductsQuery({ page: 1, elements: 5});
+  const { data, error, isLoading } = useProductsQuery({ page: 1, elements: 10});
   const [,response] = useDeleteProductMutation();
 
   return (
