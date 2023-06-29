@@ -41,4 +41,3 @@ export type FormInputs = {
   description: string,
   reviews: { value: string }[],
 }
-

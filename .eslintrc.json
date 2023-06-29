@@ -1,5 +1,6 @@
 {
   "extends": [
+    "airbnb",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
@@ -174,7 +175,11 @@
       }
     ],
     "react-hooks/rules-of-hooks": "warn",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-param-reassign": ["error", { "props": false }]
   }
 }
 

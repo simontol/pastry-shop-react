@@ -1,12 +1,12 @@
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import Input from "./Input";
-import { hideModal } from "./redux/modalReducer";
-import { useNewProductMutation } from "./redux/storeApi";
-import { FormInputs, ModalState, ProductData } from "./redux/types";
-import Loader from "./Loader";
-import ReviewInput from "./ReviewInput";
-import InputSelect from "./InputSelect";
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import Input from './Input';
+import { hideModal } from './redux/modalReducer';
+import { useNewProductMutation } from './redux/storeApi';
+import { FormInputs, ModalState, ProductData } from './redux/types';
+import Loader from './Loader';
+import ReviewInput from './ReviewInput';
+import InputSelect from './InputSelect';
 
 const ProductModal = () => {
   const dispatch = useDispatch();
@@ -19,23 +19,23 @@ const ProductModal = () => {
     const formData: ProductData = {
       ...data,
       reviews: data.reviews?.map(r => r.value) || [],
-    }
+    };
     createProduct(formData);
   };
 
   const close = () => {
     reset({});
     dispatch(hideModal());
-  }
+  };
   if (show !== 'ProductModal') return null;
 
   return (
     <div className='modal'>
-      <Loader loading={response.isLoading} />
+      <Loader loading={ response.isLoading } />
       <section className='modal__body'>
         <div className='modal__title'>Create new product</div>
-        <FormProvider {...methods} >
-          <form onSubmit={handleSubmit(onSubmit)}>
+        <FormProvider { ...methods }>
+          <form onSubmit={ handleSubmit(onSubmit) }>
             <Input name='title' required />
             <Input name='description' required />
             <Input name='category' required />
@@ -46,7 +46,7 @@ const ProductModal = () => {
               <button type='submit' className='red'>
                 Save
               </button>
-              <button type='button' onClick={close}>
+              <button type='button' onClick={ close }>
                 Cancel
               </button>
             </div>
@@ -54,7 +54,7 @@ const ProductModal = () => {
         </FormProvider>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default ProductModal
+export default ProductModal;
