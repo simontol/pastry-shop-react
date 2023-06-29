@@ -4,7 +4,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -12,7 +13,8 @@
     "import",
     "@typescript-eslint",
     "react-hooks",
-    "react-refresh"
+    "react-refresh",
+    "jest"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -23,7 +25,8 @@
     "ecmascript": 6
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
   "rules": {
     "react-refresh/only-export-components": "warn",

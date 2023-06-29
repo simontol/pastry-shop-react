@@ -4,15 +4,19 @@ import { useStoreQuery } from '../redux/storeApi';
 
 const InputSelect = () => {
   const { data } = useStoreQuery();
-  const { register } = useFormContext<FormInputs>();
+  const { register, formState: { errors } } = useFormContext<FormInputs>();
 
   if (!data) return null;
   return (
-    <select { ...register('employee') }>
-      {data.employees.map(employee => (
-        <option key={ employee } value={ employee }>{employee}</option>
-      ))}
-    </select>
+    <div className='input'>
+      <label htmlFor='employee'>Employee</label>
+      <select { ...register('employee') }>
+        {data.employees.map(employee => (
+          <option key={ employee } value={ employee }>{employee}</option>
+        ))}
+      </select>
+      {errors.employee && <span className='input__error'>This field is required</span>}
+    </div>
   );
 };
 
