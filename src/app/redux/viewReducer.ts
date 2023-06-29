@@ -1,11 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export enum ListTypes {
+  Panel = 'panel',
+  Grid = 'grid',
+}
+
 type ViewState = {
-  list: string
+  list: ListTypes
 }
 
 const initialState: ViewState = {
-  list: 'panel',
+  list: ListTypes.Panel,
 };
 
 export const modalSlice = createSlice({
@@ -13,11 +18,7 @@ export const modalSlice = createSlice({
   initialState,
   reducers: {
     switchView: (state) => {
-      if (state.list === 'panel') {
-        state.list = 'grid';
-      } else {
-        state.list = 'panel';
-      }
+      state.list = state.list === ListTypes.Panel ? ListTypes.Grid : ListTypes.Panel;
     },
   },
 });

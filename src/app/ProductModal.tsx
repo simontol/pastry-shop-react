@@ -34,24 +34,26 @@ const ProductModal = () => {
       <Loader loading={ response.isLoading } />
       <section className='modal__body'>
         <div className='modal__title'>Create new product</div>
-        <FormProvider { ...methods }>
-          <form onSubmit={ handleSubmit(onSubmit) }>
-            <Input name='title' required />
-            <Input name='description' required />
-            <Input name='category' required />
-            <Input name='price' required type='number' />
-            <InputSelect />
-            <ReviewInput />
-            <div className='modal__buttons'>
-              <button type='submit' className='red'>
-                Save
-              </button>
-              <button type='button' onClick={ close }>
-                Cancel
-              </button>
-            </div>
-          </form>
-        </FormProvider>
+        <div className="modal__content">
+          <FormProvider { ...methods }>
+            <form onSubmit={ handleSubmit(onSubmit) }>
+              <Input name='title' required />
+              <Input name='description' required />
+              <Input name='category' required />
+              <Input name='price' required type='number' />
+              <InputSelect />
+              <ReviewInput />
+              <div className='modal__buttons'>
+                <button type='submit' className='red'>
+                  Save
+                </button>
+                <button type='button' onClick={ close }>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </FormProvider>
+        </div>
       </section>
     </div>
   );

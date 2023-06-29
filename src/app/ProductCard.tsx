@@ -28,21 +28,19 @@ const ProductCard = ({ product }: Props) => {
   return (
     <div className='product__card'>
       <h2 className='product__title'>{title}</h2>
-      <div className='product__price'>
-        {parsePrice(price)}
-        {' '}
-        €
-      </div>
-      <div className='product__category'>{category}</div>
-      <div className='product__employee'>{employee}</div>
-      <div className='product__description'>{description}</div>
+      <div className='product__description'><span>Description:</span> {description}</div>
+      <div className='product__category'><span>Category:</span> {category}</div>
+      <div className='product__price'><span>Price:</span> {parsePrice(price)} €</div>
+      <div className='product__employee'><span>Employee:</span> {employee}</div>
       {reviews && (
-      <div className='product__reviews'>
-        {reviews.map(review => (<div key={ review }>{review}</div>))}
-      </div>
+        <div className='product__reviews'>
+          <span>Reviews:</span>
+          {reviews.map(review => (<div key={review}>{review}</div>))}
+        </div>
       )}
+      <div className='product__spacer'></div>
       <div className='product__buttons'>
-        <button className='red' onClick={ () => openModal('DeleteModal') }>DELETE</button>
+        <button className='red' onClick={() => openModal('DeleteModal')}>DELETE</button>
       </div>
     </div>
   );

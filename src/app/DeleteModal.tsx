@@ -20,26 +20,28 @@ const DeleteModal = () => {
   return (
     <div className='modal'>
       <section className='modal__body'>
-        <div className='modal__description'>
-          Do you wish to delete
-          {' '}
-          {product.data.title}
-          ?
-        </div>
-        <div className='modal__buttons'>
-          <button
-            className='red'
-            type='button'
-            onClick={ () => deleteProduct(product.id) }
-          >
-            Confirm
-          </button>
-          <button
-            type='button'
-            onClick={ () => dispatch(hideModal()) }
-          >
-            Cancel
-          </button>
+        <div className="modal__content">
+          <div className='modal__description'>
+            Do you wish to delete
+            {' '}
+            {product.data.title}
+            ?
+          </div>
+          <div className='modal__buttons'>
+            <button
+              className='red'
+              type='button'
+              onClick={ () => deleteProduct(product.id) }
+            >
+              Confirm
+            </button>
+            <button
+              type='button'
+              onClick={ () => dispatch(hideModal()) }
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </section>
     </div>
