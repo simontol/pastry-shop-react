@@ -1,51 +1,57 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "./Input";
 import { hideModal } from "./redux/modalReducer";
 import { useNewProductMutation } from "./redux/storeApi";
-import { ModalState, Product } from "./redux/types";
-
-export type Inputs = {
-  title: string,
-  category: string,
-  price: number,
-  employee: string,
-  description: string,
-  reviews?: string[],
-}
+import { FormInputs, ModalState, ProductData } from "./redux/types";
+import Loader from "./Loader";
+import ReviewInput from "./ReviewInput";
+import InputSelect from "./InputSelect";
 
 const ProductModal = () => {
   const dispatch = useDispatch();
   const { show } = useSelector<any, ModalState>(state => state.modal);
-  const { register, handleSubmit, formState: { errors }, getValues, reset } = useForm<Inputs>();
-  const [createProduct, createResponse] = useNewProductMutation();
+  const methods = useForm<FormInputs>();
+  const { handleSubmit, reset } = methods;
+  const [createProduct, response] = useNewProductMutation();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const newProduct: Product = {
-      id: '',
-      data,
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+    const formData: ProductData = {
+      ...data,
+      reviews: data.reviews?.map(r => r.value) || [],
     }
-    createProduct(newProduct);
+    createProduct(formData);
   };
 
+  const close = () => {
+    reset({});
+    dispatch(hideModal());
+  }
   if (show !== 'ProductModal') return null;
 
   return (
     <div className='modal'>
-      <section className="modal__body">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Input register={register} name="title" errors={errors} required />
-          <Input register={register} name="description" errors={errors} required />
-          <Input register={register} name="category" errors={errors} required />
-          <div className="modal__buttons">
-            <button type="submit">
-              Save
-            </button>
-            <button type="button" onClick={() => dispatch(hideModal())}>
-              Close
-            </button>
-          </div>
-        </form>
+      <Loader loading={response.isLoading} />
+      <section className='modal__body'>
+        <div className='modal__title'>Create new product</div>
+        <FormProvider {...methods} >
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Input name='title' required />
+            <Input name='description' required />
+            <Input name='category' required />
+            <Input name='price' required type='number' />
+            <InputSelect />
+            <ReviewInput />
+            <div className='modal__buttons'>
+              <button type='submit' className='red'>
+                Save
+              </button>
+              <button type='button' onClick={close}>
+                Cancel
+              </button>
+            </div>
+          </form>
+        </FormProvider>
       </section>
     </div>
   )

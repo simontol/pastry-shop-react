@@ -4,16 +4,18 @@ export type Store = {
   employees: string[],
 }
 
+export type ProductData = {
+  title: string,
+  category: string,
+  price: number|string,
+  employee: string,
+  description: string,
+  reviews: string[],
+}
+
 export type Product = {
   id: string,
-  data: {
-    title: string,
-    category: string,
-    price: number,
-    employee: string,
-    description: string,
-    reviews?: string[],
-  }
+  data: ProductData
 }
 
 export type ProductResponse = {
@@ -28,6 +30,15 @@ export type Pagination = {
 
 export type ModalState = {
   show: string,
-  product: Product|null,
+  product: Product | null,
+}
+
+export type FormInputs = {
+  title: string,
+  category: string,
+  price: number,
+  employee: string,
+  description: string,
+  reviews: { value: string }[],
 }
 

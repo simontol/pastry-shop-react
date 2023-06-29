@@ -1,0 +1,47 @@
+
+input, select {
+  color: $dark-grey;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: 1px solid #d1d2d6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  height: 2.2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1rem;
+  text-transform: capitalize;
+  color: $medium-grey;
+}
+
+.input {
+  &__error {
+    font-size: 1rem;
+  }
+
+  &__reviews {
+    margin: 1rem 0;
+
+    i.bi {
+      font-size: 1.2rem;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    &__field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      i.bi {
+        margin: 0 0 1rem 1rem;
+      }
+    }
+  }
+}

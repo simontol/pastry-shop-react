@@ -5,40 +5,40 @@ import { useEffect } from "react";
 import { ModalState } from "./redux/types";
 
 const DeleteModal = () => {
-  const dispatch = useDispatch();
-  const { show, product } = useSelector<any, ModalState>(state => state.modal);
-  const [deleteProduct, response] = useDeleteProductMutation();
+    const dispatch = useDispatch();
+    const { show, product } = useSelector<any, ModalState>(state => state.modal);
+    const [deleteProduct, response] = useDeleteProductMutation();
 
-  useEffect(() => {
-    if (response.isSuccess) {
-      dispatch(hideModal());
-    }
-  }, [response, dispatch]);
+    useEffect(() => {
+        if (response.isSuccess) {
+            dispatch(hideModal());
+        }
+    }, [response, dispatch]);
 
-  if (show !== 'DeleteModal' || !product) return null;
+    if (show !== 'DeleteModal' || !product) return null;
 
-  return (
-    <div className='modal'>
-      <section className="modal__body">
-        <div className="modal__description">
+    return (
+        <div className='modal'>
+            <section className='modal__body'>
+                <div className='modal__description'>
           Do you wish to delete {product.data.title}?
-        </div>
-        <div className="modal__buttons">
-          <button
-            className="red"
-            type="button"
-            onClick={() => deleteProduct(product.id)}>
+                </div>
+                <div className='modal__buttons'>
+                    <button
+                        className='red'
+                        type='button'
+                        onClick={ () => deleteProduct(product.id) }>
             Confirm
-          </button>
-          <button
-            type="button"
-            onClick={() => dispatch(hideModal())}>
+                    </button>
+                    <button
+                        type='button'
+                        onClick={ () => dispatch(hideModal()) }>
             Cancel
-          </button>
+                    </button>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-  )
+    )
 }
 
 export default DeleteModal

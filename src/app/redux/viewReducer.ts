@@ -5,21 +5,21 @@ type ViewState = {
 }
 
 const initialState: ViewState = {
-  list: 'panel',
+    list: 'panel',
 }
 
 export const modalSlice = createSlice({
-  name: 'view',
-  initialState,
-  reducers: {
-    switchView: (state) => {
-      if (state.list === 'panel') {
-        state.list = 'grid';
-      } else {
-        state.list = 'panel';
-      }
+    name: 'view',
+    initialState,
+    reducers: {
+        switchView: (state) => {
+            if (state.list === 'panel') {
+                state.list = 'grid';
+            } else {
+                state.list = 'panel';
+            }
+        },
     },
-  },
 })
 
 export const { switchView } = modalSlice.actions
