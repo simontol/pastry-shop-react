@@ -1,5 +1,6 @@
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Input from './Input';
 import { hideModal } from './redux/modalReducer';
 import { useNewProductMutation } from './redux/storeApi';
@@ -22,11 +23,17 @@ const ProductModal = () => {
     };
     createProduct(formData);
   };
-
   const close = () => {
     reset({});
     dispatch(hideModal());
   };
+
+  useEffect(() => {
+    if (response.isSuccess) {
+      close();
+    }
+  }, [response]);
+
   if (show !== 'ProductModal') return null;
 
   return (
@@ -34,7 +41,7 @@ const ProductModal = () => {
       <Loader loading={ response.isLoading } />
       <section className='modal__body'>
         <div className='modal__title'>Create new product</div>
-        <div className="modal__content">
+        <div className='modal__content'>
           <FormProvider { ...methods }>
             <form onSubmit={ handleSubmit(onSubmit) }>
               <Input name='title' required />

@@ -28,17 +28,6 @@ export const storeApi = createApi({
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      }),
-      invalidatesTags: ['Products'],
-    }),
-    updateProduct: builder.mutation<any, Product>({
-      query: (product) => ({
-        url: `/products/${ product.id }`,
-        method: 'PUT',
-        body: product,
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
         responseHandler: 'text',
       }),
       invalidatesTags: ['Products'],
@@ -58,6 +47,5 @@ export const {
   useProductsQuery,
   useStoreQuery,
   useDeleteProductMutation,
-  useUpdateProductMutation,
   useNewProductMutation,
 } = storeApi;

@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useStoreQuery } from './redux/storeApi';
 import Logo from '../assets/logo.png';
 import { showModal } from './redux/modalReducer';
-import { RootState } from './store';
+import { Store } from './redux/types';
 import { ListTypes, switchView } from './redux/viewReducer';
+import { RootState } from './store';
 
-const Header = () => {
+type Props = {
+  store?: Store,
+}
+
+const Header = ({ store }: Props) => {
   const dispatch = useDispatch();
   const listView = useSelector<RootState, string>(state => state.view.list);
-  const { data } = useStoreQuery();
   const addProduct = () => {
     dispatch(showModal({ show: 'ProductModal', product: null }));
   };
@@ -17,9 +20,9 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='header__logo'><img src={Logo} alt='' /></div>
-      <div className='header__title'>{data?.name}</div>
-      <button className='header__button' onClick={addProduct} title='Add Product'>
+      <div className='header__logo'><img src={ Logo } alt='' /></div>
+      <div className='header__title'>{store?.name}</div>
+      <button className='header__button' onClick={ addProduct } title='Add Product'>
         <i className='bi bi-plus-circle-fill' />
         {' '}
         <span>Add</span>
@@ -27,8 +30,16 @@ const Header = () => {
       <button
         title='Switch view'
         className='header__button'
-        onClick={() => dispatch(switchView())}>
-        <i className={`bi bi-${listIcon} switch`} />
+        onClick={ () => dispatch(switchView()) }
+      >
+        <i className={ `bi bi-${ listIcon } switch` } />
+      </button>
+      <button
+        title='Stats'
+        className='header__button'
+        onClick={ () => dispatch(switchView()) }
+      >
+        <i className='bi bi-pie-chart' />
       </button>
     </div>
   );

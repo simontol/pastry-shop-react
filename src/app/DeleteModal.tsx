@@ -20,7 +20,7 @@ const DeleteModal = () => {
   return (
     <div className='modal'>
       <section className='modal__body'>
-        <div className="modal__content">
+        <div className='modal__content'>
           <div className='modal__description'>
             Do you wish to delete
             {' '}
