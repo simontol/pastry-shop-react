@@ -15,6 +15,7 @@ const Input = ({ name, required = false, type = 'text' }: Props) => {
       <input
         type={ type }
         step={ type === 'number' ? '0.01' : undefined }
+        min={ 0 }
         { ...register(name, { required }) }
       />
       {errors[name] && <span className='input__error'>This field is required</span>}

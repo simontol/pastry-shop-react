@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { storeApi } from './redux/storeApi';
+import { api } from './redux/storeApi';
 import modalReducer from './redux/modalReducer';
 import viewReducer from './redux/viewReducer';
 
 export const store = configureStore({
   reducer: {
-    [storeApi.reducerPath]: storeApi.reducer,
+    [api.reducerPath]: api.reducer,
     modal: modalReducer,
     view: viewReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(storeApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>

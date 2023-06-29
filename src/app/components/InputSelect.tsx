@@ -8,7 +8,7 @@ const InputSelect = () => {
 
   if (!data) return null;
   return (
-    <div className='input'>
+    <div className='input input-select'>
       <label htmlFor='employee'>Employee</label>
       <select { ...register('employee') }>
         {data.employees.map(employee => (

@@ -1,23 +1,18 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { showModal } from '../redux/modalReducer';
 import { Product } from '../redux/types';
+import { parsePrice } from '../utils';
 
 type Props = {
   product: Product,
 }
 
-const parsePrice = (price: string | number): string => {
-  if (typeof price === 'string') {
-    const p = parseFloat(price);
-    if (Number.isNaN(p)) return '';
-    return p.toFixed(2);
-  }
-  return price.toFixed(2);
-};
-
 const ProductCard = ({ product }: Props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
+    id,
     data: {
       title, category, price, employee, description, reviews,
     },
@@ -27,7 +22,12 @@ const ProductCard = ({ product }: Props) => {
   };
   return (
     <div className='product__card'>
-      <h2 className='product__title'>{title}</h2>
+      <div
+        className='product__title'
+        onClick={ () => navigate(`/products/${ id }`) }
+      >
+        {title}
+      </div>
       <div className='product__description'>
         <span>Description:</span>
         {' '}

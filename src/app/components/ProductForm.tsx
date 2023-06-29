@@ -1,17 +1,15 @@
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import Input from './Input';
-import { hideModal } from '../redux/modalReducer';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { useNewProductMutation } from '../redux/storeApi';
-import { FormInputs, ModalState, ProductData } from '../redux/types';
+import { FormInputs, ProductData } from '../redux/types';
+import Input from './Input';
+import InputSelect from './InputSelect';
 import Loader from './Loader';
 import ReviewInput from './ReviewInput';
-import InputSelect from './InputSelect';
 
-const ProductModal = () => {
-  const dispatch = useDispatch();
-  const { show } = useSelector<any, ModalState>(state => state.modal);
+const ProductForm = () => {
+  const navigate = useNavigate();
   const methods = useForm<FormInputs>();
   const { handleSubmit, reset } = methods;
   const [createProduct, response] = useNewProductMutation();
@@ -23,25 +21,23 @@ const ProductModal = () => {
     };
     createProduct(formData);
   };
-  const close = () => {
+  const back = () => {
     reset({});
-    dispatch(hideModal());
+    navigate('/');
   };
 
   useEffect(() => {
     if (response.isSuccess) {
-      close();
+      back();
     }
-  }, [response]);
-
-  if (show !== 'ProductModal') return null;
+  }, [response, navigate]);
 
   return (
-    <div className='modal'>
+    <div className='product-form'>
       <Loader loading={ response.isLoading } />
-      <section className='modal__body'>
-        <div className='modal__title'>Create new product</div>
-        <div className='modal__content'>
+      <section className='product-form__body'>
+        <div className='product-form__title'>Create new product</div>
+        <div className='product-form__content'>
           <FormProvider { ...methods }>
             <form onSubmit={ handleSubmit(onSubmit) }>
               <Input name='title' required />
@@ -50,11 +46,11 @@ const ProductModal = () => {
               <Input name='price' required type='number' />
               <InputSelect />
               <ReviewInput />
-              <div className='modal__buttons'>
+              <div className='product-form__buttons'>
                 <button type='submit' className='red'>
                   Save
                 </button>
-                <button type='button' onClick={ close }>
+                <button type='button' onClick={ back }>
                   Cancel
                 </button>
               </div>
@@ -66,4 +62,4 @@ const ProductModal = () => {
   );
 };
 
-export default ProductModal;
+export default ProductForm;

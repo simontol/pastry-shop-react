@@ -1,4 +1,57 @@
 
+.product-form {
+  padding: 3rem 5rem;
+
+  &__title {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .input {
+    width: 48%;
+    &__error {
+      font-size: 1rem;
+      color: $light-red;
+    }
+
+    &__reviews {
+      width: 100%;
+      margin: 1rem 0;
+
+      i.bi {
+        font-size: 1.2rem;
+      }
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      &__field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        i.bi {
+          margin: 0 0 1rem 1rem;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 input, select {
   color: $dark-grey;
   font-size: 1.2rem;
@@ -15,33 +68,4 @@ label {
   font-size: 1rem;
   text-transform: capitalize;
   color: $medium-grey;
-}
-
-.input {
-  &__error {
-    font-size: 1rem;
-  }
-
-  &__reviews {
-    margin: 1rem 0;
-
-    i.bi {
-      font-size: 1.2rem;
-    }
-
-    &__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    &__field {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      i.bi {
-        margin: 0 0 1rem 1rem;
-      }
-    }
-  }
 }

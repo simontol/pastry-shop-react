@@ -1,10 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
-  Pagination, Product, ProductData, ProductResponse, Store,
+  Pagination,
+  ProductData, ProductResponse, Store,
 } from './types';
 
-export const storeApi = createApi({
+export const api = createApi({
   reducerPath: 'storeApi',
+
   baseQuery: fetchBaseQuery({
     baseUrl: `${ import.meta.env.VITE_BASE_URL }stores/${ import.meta.env.VITE_STORE_ID }`,
   }),
@@ -13,11 +15,12 @@ export const storeApi = createApi({
     store: builder.query<Store, void>({
       query: () => '',
     }),
-    products: builder.query<ProductResponse, Pagination>({
-      query: ({ page = 1, elements = 5 }) => `/products?page=${ page }&elements=${ elements }`,
+    products: builder.query<ProductResponse, Pagination | void>({
+      query: (pagination) => (pagination
+        ? `/products?page=${ pagination.page }&elements=${ pagination.elements }` : '/products'),
       providesTags: ['Products'],
     }),
-    productById: builder.query<Product, string>({
+    productById: builder.query<ProductData, string>({
       query: (id) => `/products/${ id }`,
     }),
     newProduct: builder.mutation<any, ProductData>({
@@ -48,4 +51,4 @@ export const {
   useStoreQuery,
   useDeleteProductMutation,
   useNewProductMutation,
-} = storeApi;
+} = api;
