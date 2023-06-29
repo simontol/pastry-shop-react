@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
-import { FormInputs } from './redux/types';
-import { useStoreQuery } from './redux/storeApi';
+import { FormInputs } from '../redux/types';
+import { useStoreQuery } from '../redux/storeApi';
 
 const InputSelect = () => {
   const { data } = useStoreQuery();

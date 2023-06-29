@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { useEffect } from 'react';
-import { FormInputs } from './redux/types';
+import { FormInputs } from '../redux/types';
 
 const ReviewInput = () => {
   const { control, register } = useFormContext<FormInputs>();

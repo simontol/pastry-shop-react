@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Logo from '../assets/logo.png';
-import { showModal } from './redux/modalReducer';
-import { Store } from './redux/types';
-import { ListTypes, switchView } from './redux/viewReducer';
-import { RootState } from './store';
+import { showModal } from '../redux/modalReducer';
+import { Store } from '../redux/types';
+import { ListTypes, switchView } from '../redux/viewReducer';
+import { RootState } from '../store';
 
 type Props = {
   store?: Store,

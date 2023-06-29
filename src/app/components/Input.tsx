@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import { ProductData } from './redux/types';
+import { ProductData } from '../redux/types';
 
 type Props = {
   name: 'title' | 'category' | 'price' | 'employee' | 'description',

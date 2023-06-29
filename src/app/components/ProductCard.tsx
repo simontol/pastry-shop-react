@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { showModal } from './redux/modalReducer';
-import { Product } from './redux/types';
+import { showModal } from '../redux/modalReducer';
+import { Product } from '../redux/types';
 
 type Props = {
   product: Product,

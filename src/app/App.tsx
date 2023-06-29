@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
-import DeleteModal from './app/DeleteModal';
-import Header from './app/Header';
-import Loader from './app/Loader';
-import ProductCard from './app/ProductCard';
-import ProductModal from './app/ProductModal';
-import { useDeleteProductMutation, useProductsQuery, useStoreQuery } from './app/redux/storeApi';
-import { RootState } from './app/store';
+import DeleteModal from './components/DeleteModal';
+import Header from './components/Header';
+import Loader from './components/Loader';
+import ProductCard from './components/ProductCard';
+import ProductModal from './components/ProductModal';
+import { useDeleteProductMutation, useProductsQuery, useStoreQuery } from './redux/storeApi';
+import { RootState } from './store';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import './scss/index.scss';
 
 type ErrorResponse = {
   error: string

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { hideModal } from './redux/modalReducer';
-import { useDeleteProductMutation } from './redux/storeApi';
-import { ModalState } from './redux/types';
+import { hideModal } from '../redux/modalReducer';
+import { useDeleteProductMutation } from '../redux/storeApi';
+import { ModalState } from '../redux/types';
 
 const DeleteModal = () => {
   const dispatch = useDispatch();
