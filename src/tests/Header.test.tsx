@@ -1,12 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Header from '../app/components/Header';
-import { Store } from '../app/redux/types';
-
-const store: Store = {
-  name: 'store name',
-  category: 'category',
-  employees: ['Pippo'],
-};
+import { storeMock } from '../mocks/storeMock';
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
@@ -14,9 +8,13 @@ jest.mock('react-redux', () => ({
   useDispatch: () => mockDispatch,
 }));
 
+jest.mock('react-router-dom', () => ({
+  useNavigate: jest.fn(),
+}));
+
 describe('Header tests', () => {
   it('should contains the heading title', () => {
-    render(<Header store={ store } />);
+    render(<Header store={ storeMock } />);
     const heading = screen.getByText(/store name/i);
     expect(heading).toBeInTheDocument();
   });

@@ -9,7 +9,7 @@ import Loader from './Loader';
 import { ErrorResponse } from '../redux/types';
 
 const PageWrapper = () => {
-  const { data: store, error: storeError } = useStoreQuery();
+  const { data: store, error: storeError, isLoading } = useStoreQuery();
   const { error: productsError } = useSelector(api.endpoints.products.select());
   const [, deleteResponse] = useDeleteProductMutation();
 
@@ -26,7 +26,7 @@ const PageWrapper = () => {
       <Header store={ store } />
       <Outlet />
       <DeleteModal />
-      <Loader loading={ deleteResponse.isLoading } />
+      <Loader loading={ isLoading || deleteResponse.isLoading } />
       <ToastContainer autoClose={ 5000 } />
     </>
   );
