@@ -36,7 +36,7 @@ const Header = ({ store }: Props) => {
       <button
         title='Statistics'
         className='header__button'
-        onClick={ () => dispatch(switchView()) }
+        onClick={ () => navigate('/statistics') }
       >
         <i className='bi bi-pie-chart' />
       </button>

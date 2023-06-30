@@ -6,14 +6,11 @@ import { api, useDeleteProductMutation, useStoreQuery } from '../redux/storeApi'
 import DeleteModal from './DeleteModal';
 import Header from './Header';
 import Loader from './Loader';
-
-type ErrorResponse = {
-  error: string
-}
+import { ErrorResponse } from '../redux/types';
 
 const PageWrapper = () => {
   const { data: store, error: storeError } = useStoreQuery();
-  const { error: productsError, isLoading } = useSelector(api.endpoints.products.select());
+  const { error: productsError } = useSelector(api.endpoints.products.select());
   const [, deleteResponse] = useDeleteProductMutation();
 
   useEffect(() => {
@@ -29,7 +26,7 @@ const PageWrapper = () => {
       <Header store={ store } />
       <Outlet />
       <DeleteModal />
-      <Loader loading={ isLoading || deleteResponse.isLoading } />
+      <Loader loading={ deleteResponse.isLoading } />
       <ToastContainer autoClose={ 5000 } />
     </>
   );

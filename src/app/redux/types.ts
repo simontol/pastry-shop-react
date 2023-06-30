@@ -41,3 +41,13 @@ export type FormInputs = {
   description: string,
   reviews: { value: string }[],
 }
+
+export type ErrorResponse = {
+  error: string,
+  status: number,
+}
+
+export type RouterError = {
+  statusText?: string,
+  message: string,
+}

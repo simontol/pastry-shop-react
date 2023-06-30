@@ -14,51 +14,44 @@ const ProductCard = ({ product }: Props) => {
   const {
     id,
     data: {
-      title, category, price, employee, description, reviews,
+      title, category, price, employee, reviews = [],
     },
   } = product;
-  const openModal = (type: string) => {
-    dispatch(showModal({ show: type, product }));
+  const openModal = () => {
+    dispatch(showModal({ show: 'DeleteModal', product }));
   };
   return (
     <div className='product__card'>
       <div
-        className='product__title'
+        className='product__card__title'
         onClick={ () => navigate(`/products/${ id }`) }
       >
         {title}
       </div>
-      <div className='product__description'>
-        <span>Description:</span>
-        {' '}
-        {description}
-      </div>
-      <div className='product__category'>
+      <div className='product__card__field'>
         <span>Category:</span>
         {' '}
         {category}
       </div>
-      <div className='product__price'>
+      <div className='product__card__field'>
         <span>Price:</span>
         {' '}
         {parsePrice(price)}
         {' '}
         €
       </div>
-      <div className='product__employee'>
+      <div className='product__card__field'>
         <span>Employee:</span>
         {' '}
         {employee}
       </div>
-      {reviews && (
-        <div className='product__reviews'>
-          <span>Reviews:</span>
-          {reviews.map(review => (<div key={ review }>{review}</div>))}
-        </div>
-      )}
+      <div className='product__card__field'>
+        <span>Reviews:</span>
+        <div className='badge'>{ reviews.length }</div>
+      </div>
       <div className='product__spacer' />
       <div className='product__buttons'>
-        <button className='red' onClick={ () => openModal('DeleteModal') }>DELETE</button>
+        <button className='red' onClick={ openModal }>DELETE</button>
       </div>
     </div>
   );

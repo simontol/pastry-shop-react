@@ -13,7 +13,7 @@ const ReviewInput = () => {
     if (!fields.length) {
       append({ value: '' });
     }
-  }, []);
+  }, [append, fields]);
 
   return (
     <div className='input__reviews'>
@@ -26,7 +26,7 @@ const ReviewInput = () => {
           <input
             { ...register(`reviews.${ index }.value`) }
           />
-          <i className='bi bi-dash-circle-fill' onClick={ () => remove(index) } />
+          { fields.length > 1 && <i className='bi bi-dash-circle-fill' onClick={ () => remove(index) } />}
         </div>
       ))}
     </div>

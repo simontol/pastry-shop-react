@@ -6,15 +6,22 @@ import ProductsList from './components/ProductsList';
 import './scss/index.scss';
 import PageWrapper from './components/PageWrapper';
 import ProductDetails from './components/ProductDetails';
+import ErrorPage from './components/ErrorPage';
+import StatsGraph from './components/StatsGraph';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <PageWrapper />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
         element: <ProductsList />,
+      },
+      {
+        path: '/statistics',
+        element: <StatsGraph />,
       },
       {
         path: '/products/new',

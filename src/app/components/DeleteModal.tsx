@@ -1,19 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { hideModal } from '../redux/modalReducer';
 import { useDeleteProductMutation } from '../redux/storeApi';
 import { ModalState } from '../redux/types';
 
 const DeleteModal = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { show, product } = useSelector<any, ModalState>(state => state.modal);
   const [deleteProduct, response] = useDeleteProductMutation();
 
   useEffect(() => {
     if (response.isSuccess) {
+      navigate('/');
       dispatch(hideModal());
     }
-  }, [response, dispatch]);
+  }, [response, dispatch, navigate]);
 
   if (show !== 'DeleteModal' || !product) return null;
 
