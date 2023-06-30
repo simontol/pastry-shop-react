@@ -46,13 +46,13 @@ body {
 
   &__left {
     cursor: pointer;
-    margin-bottom: 0.6rem;
   }
 
   &__left,
   &__right {
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
 
   &__title {
@@ -119,13 +119,18 @@ button {
   text-shadow: 1px 1px 2px $default-blue;
   background-color: $dark-blue;
 
-  &:hover {
+  &:hover:enabled {
     border: 0;
     box-shadow: rgb(209, 210, 214) 0 0.2rem 0.5rem;
   }
 
   &.red {
     background-color: $light-red;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: $light-blue;
   }
 }
 

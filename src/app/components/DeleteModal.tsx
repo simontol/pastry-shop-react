@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { hideModal } from '../redux/modalReducer';
 import { useDeleteProductMutation } from '../redux/storeApi';
 import { ModalState } from '../redux/types';
+import { RootState } from '../store';
 
 const DeleteModal = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { show, product } = useSelector<any, ModalState>(state => state.modal);
+  const { show, product } = useSelector<RootState, ModalState>(state => state.modal);
   const [deleteProduct, response] = useDeleteProductMutation();
 
   useEffect(() => {

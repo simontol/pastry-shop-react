@@ -13,7 +13,7 @@
       cursor: pointer;
       font-size: 1.6rem;
       font-weight: 600;
-      margin: 1.6rem 2rem;
+      margin: 1.6rem 0;
       text-decoration: underline;
     }
     &__field {
@@ -38,6 +38,7 @@
 
         &__title {
           width: 20%;
+          margin: 1.6rem 2rem;
         }
       }
     }
@@ -94,4 +95,19 @@
   text-decoration: none;
   width: 1.4rem;
   height: 1.4rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  .badge {
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+  }
 }
