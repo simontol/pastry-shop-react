@@ -6,7 +6,7 @@ jest.mock('react-router-dom', () => ({
   useRouteError: () => ({ statusText: 'Page Not found' }),
 }));
 
-describe('ErrorPage tests', () => {
+describe('Loader tests', () => {
   it('should display loader image', () => {
     const { container } = render(<Loader loading />);
     const div = container.querySelector('div');

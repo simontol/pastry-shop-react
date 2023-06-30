@@ -15,7 +15,7 @@ jest.mock('../app/redux/storeApi', () => ({
   useProductByIdQuery: () => ({ data: productMock.data }),
 }));
 
-describe('ProductCard tests', () => {
+describe('ProductDetails tests', () => {
   it('should be displayed and contain title', () => {
     const { container } = render(<ProductDetails />);
     expect(container).toBeInTheDocument();

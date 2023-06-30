@@ -22,7 +22,7 @@ const ReviewInput = () => {
         <i className='bi bi-plus-circle-fill' onClick={ () => append({ value: '' }) } />
       </div>
       {fields.map((field, index) => (
-        <div className='input__reviews__field' key={ field.id }>
+        <div className='input__reviews__field' key={ field.value }>
           <input
             { ...register(`reviews.${ index }.value`) }
           />
