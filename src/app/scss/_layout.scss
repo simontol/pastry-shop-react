@@ -36,15 +36,23 @@ body {
 
 .header {
   display: flex;
-  height: 3rem;
+  min-height: 3rem;
   background-color: $default-blue;
   color: $white;
   padding: 1rem;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
-  &__title,
-  &__logo {
+  &__left {
     cursor: pointer;
+    margin-bottom: 0.6rem;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    justify-content: space-around;
   }
 
   &__title {
@@ -67,11 +75,32 @@ body {
     border: 2px solid $white;
     margin-left: 1rem;
 
+    span {
+      display: none;
+    }
+
     &:hover {
       color: $default-blue;
       background-color: $white;
       border: 2px solid $white;
       box-shadow: none;
+    }
+  }
+
+  .switch-view {
+    display: none;
+  }
+
+  @media screen and (min-width: 1024px) {
+    height: 3rem;
+    justify-content: space-between;
+
+    .switch-view {
+      display: block;
+    }
+
+    &__button span {
+      display: inline;
     }
   }
 }
@@ -101,7 +130,11 @@ button {
 }
 
 .container {
-  padding: 3rem 5rem;
+  padding: 1rem;
+
+  @media screen and (min-width: 1024px) {
+    padding: 3rem 5rem;
+  }
 }
 
 .d-inline {

@@ -35,7 +35,7 @@ const ProductDetails = () => {
     dispatch(showModal({ show: 'DeleteModal', product: { data: product, id: id || '' } }));
   };
   return (
-    <div className='product__details'>
+    <div className='product__details container'>
       <Loader loading={ isLoading } />
       <div className='product__details__title'>{title}</div>
       <div className='product__details__description'>

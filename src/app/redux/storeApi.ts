@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   Pagination,
-  ProductData, ProductResponse, Store,
+  ProductData, ProductResponse, StatsData, Store,
 } from './types';
 
 export const api = createApi({
@@ -42,6 +42,9 @@ export const api = createApi({
       }),
       invalidatesTags: ['Products'],
     }),
+    stats: builder.query<StatsData[], void>({
+      query: () => '/stats/categories',
+    }),
   }),
 });
 
@@ -51,4 +54,5 @@ export const {
   useStoreQuery,
   useDeleteProductMutation,
   useNewProductMutation,
+  useStatsQuery,
 } = api;

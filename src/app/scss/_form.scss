@@ -1,7 +1,5 @@
 
 .product-form {
-  padding: 3rem 5rem;
-
   &__title {
     font-size: 1.6rem;
     margin-bottom: 2rem;
@@ -14,7 +12,11 @@
   }
 
   .input {
-    width: 48%;
+    width: 100%;
+
+    @media screen and (min-width: 1024px) {
+      width: 48%;
+    }
     &__error {
       font-size: 1rem;
       color: $light-red;

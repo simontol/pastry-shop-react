@@ -51,3 +51,8 @@ export type RouterError = {
   statusText?: string,
   message: string,
 }
+
+export type StatsData = {
+  numberOfProducts: number,
+  category: string,
+}

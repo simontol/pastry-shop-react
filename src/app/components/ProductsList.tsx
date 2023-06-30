@@ -5,7 +5,7 @@ import { useProductsQuery } from '../redux/storeApi';
 import Loader from './Loader';
 
 const ProductsList = () => {
-  const { data, isLoading } = useProductsQuery({ page: 1, elements: 10 });
+  const { data, isLoading } = useProductsQuery({ page: 1, elements: 20 });
   const listView = useSelector<RootState, string>(state => state.view.list);
   return (
     <div>

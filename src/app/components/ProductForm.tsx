@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useNewProductMutation } from '../redux/storeApi';
@@ -21,19 +21,19 @@ const ProductForm = () => {
     };
     createProduct(formData);
   };
-  const back = () => {
+  const back = useCallback(() => {
     reset({});
     navigate('/');
-  };
+  }, [reset, navigate]);
 
   useEffect(() => {
     if (response.isSuccess) {
       back();
     }
-  }, [response, navigate]);
+  }, [response, back]);
 
   return (
-    <div className='product-form'>
+    <div className='product-form container'>
       <Loader loading={ response.isLoading } />
       <section className='product-form__body'>
         <div className='product-form__title'>Create new product</div>

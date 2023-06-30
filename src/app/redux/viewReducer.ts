@@ -10,7 +10,7 @@ type ViewState = {
 }
 
 const initialState: ViewState = {
-  list: ListTypes.Panel,
+  list: ListTypes.Grid,
 };
 
 export const modalSlice = createSlice({
